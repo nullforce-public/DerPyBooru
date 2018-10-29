@@ -38,8 +38,10 @@ class Sort(object):
     sorting_methods = {
       "created_at",
       "score",
+      "wilson",
       "relevance",
       "height",
+      "width",
       "comments",
       "random"
     }

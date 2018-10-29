@@ -4,8 +4,10 @@ def test_sorting_methods():
   sorting_methods = {
     "created_at",
     "score",
+    "wilson",
     "relevance",
     "height",
+    "width",
     "comments",
     "random"
   }
