@@ -4,7 +4,7 @@ Python bindings for Derpibooru's API
 
 License: **Simplified BSD License**
 
-Version: **0.7**
+Version: **0.8**
 
 ## Features
 
@@ -18,6 +18,13 @@ Version: **0.7**
 - python2.7 or newer
 - requests
 
+## About this Fork
+
+This is a fork of the DerPyBooru package; it is meant to be a drop in replacement
+for the modules in that package.
+
+To use, use `derpybooru_nullforce` where you see `derpybooru` used below.
+
 ## How to install
 
 ### Python 2.7
@@ -27,7 +34,7 @@ Version: **0.7**
 ### Python 3.x
 
     $ pip3 install derpybooru
- 
+
 ## Checking documentation
 
 ### Python 2.7
@@ -112,6 +119,7 @@ q = {
 
 wallpapers = [image for image in Search().query(*q)]
 ```
+
 ### Getting the latest images from a watchlist
 
 ```python
@@ -123,4 +131,10 @@ key = "your_api_key"
 for post in Search().key(key).watched(user.ONLY):
   id_number, score, tags = post.id, post.score, ", ".join(post.tags)
   print("#{} - score: {:>3} - {}".format(id_number, score, tags))
+```
 
+## Changelog
+
+**0.8.0**
+
+* Updated sort to include *wilson* and *width*
