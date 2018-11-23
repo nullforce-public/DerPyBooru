@@ -6,6 +6,8 @@ License: **Simplified BSD License**
 
 Version: **0.8**
 
+[![Downloads](https://pepy.tech/badge/derpybooru-nullforce)](https://pepy.tech/project/derpybooru-nullforce)
+
 ## Features
 
 - High-level abstraction over Derpibooru's REST API
