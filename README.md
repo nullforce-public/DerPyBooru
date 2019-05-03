@@ -4,7 +4,7 @@ Python bindings for Derpibooru's API
 
 License: **Simplified BSD License**
 
-Version: **0.8**
+Version: **0.9.0**
 
 [![Downloads](https://pepy.tech/badge/derpybooru-nullforce)](https://pepy.tech/project/derpybooru-nullforce)
 
@@ -31,11 +31,11 @@ To use, use `derpybooru_nullforce` where you see `derpybooru` used below.
 
 ### Python 2.7
 
-    $ pip install derpybooru
+    $ pip install derpybooru-nullforce
 
 ### Python 3.x
 
-    $ pip3 install derpybooru
+    $ pip3 install derpybooru-nullforce
 
 ## Checking documentation
 
@@ -140,6 +140,11 @@ for post in Search().key(key).watched(user.ONLY):
 **0.9.0**
 
 * Update sort to include: *first_seen_at, tag_count, and updated_at*
+* Deprecated Search() methods that appear to be no longer supported by derpibooru:
+  * faves()
+  * uploads()
+  * upvotes()
+  * watched()
 
 **0.8.0**
 
