@@ -25,8 +25,6 @@ Version: **0.9.0**
 This is a fork of the DerPyBooru package; it is meant to be a drop in replacement
 for the modules in that package.
 
-To use, use `derpybooru_nullforce` where you see `derpybooru` used below.
-
 ## How to install
 
 ### Python 2.7
