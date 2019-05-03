@@ -14,7 +14,7 @@ setup(
   name = "DerPyBooru_Nullforce",
   # Versions should comply with PEP 440:
   # https://www.python.org/dev/peps/pep-0440/
-  version = "0.9.0",
+  version = "0.9.1",
   description = "Python bindings for Derpibooru's API",
   long_description = long_description,
   long_description_content_type = "text/markdown",
@@ -24,7 +24,7 @@ setup(
   license = "Simplified BSD License",
   platforms = ["any"],
   packages = find_packages(exclude=["tests"]),
-  install_requires = ["requests"],
+  install_requires = ["requests", "deprecation"],
   include_package_data = True,
   #download_url = "https://github.com/joshua-stone/DerPyBooru/tarball/0.7.2",
   # For a list of valid classifiers, see https://pypi.org/classifiers/
