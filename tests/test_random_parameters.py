@@ -3,12 +3,15 @@ from derpibooru import sort
 def test_sorting_methods():
   sorting_methods = {
     "created_at",
+    "updated_at",
+    "first_seen_at",
     "score",
     "wilson",
     "relevance",
     "height",
     "width",
     "comments",
+    "tag_count",
     "random"
   }
 

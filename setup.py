@@ -14,7 +14,7 @@ setup(
   name = "DerPyBooru_Nullforce",
   # Versions should comply with PEP 440:
   # https://www.python.org/dev/peps/pep-0440/
-  version = "0.8.0",
+  version = "0.9.0",
   description = "Python bindings for Derpibooru's API",
   long_description = long_description,
   long_description_content_type = "text/markdown",

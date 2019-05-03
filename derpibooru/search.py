@@ -108,9 +108,18 @@ class Search(object):
 
   def sort_by(self, sf):
     """
-    Determines how to sort search results. Available sorting methods are
-    sort.SCORE, sort.COMMENTS, sort.HEIGHT, sort.RELEVANCE, sort.CREATED_AT,
-    and sort.RANDOM; default is sort.CREATED_AT.
+    Determines how to sort search results. Available sorting methods are:
+      sort.CREATED_AT (default)
+      sort.UPDATED_AT
+      sort.FIRST_SEEN_AT
+      sort.SCORE
+      sort.WILSON
+      sort.RELEVANCE
+      sort.HEIGHT
+      sort.WIDTH
+      sort.COMMENTS
+      sort.TAG_COUNT
+      sort.RANDOM
     """
     params = join_params(self.parameters, {"sf": sf})
 

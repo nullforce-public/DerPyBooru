@@ -137,6 +137,10 @@ for post in Search().key(key).watched(user.ONLY):
 
 ## Changelog
 
+**0.9.0**
+
+* Update sort to include: *first_seen_at, tag_count, and updated_at*
+
 **0.8.0**
 
 * Updated sort to include *wilson* and *width*
