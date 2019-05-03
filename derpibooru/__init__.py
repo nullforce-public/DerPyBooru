@@ -19,7 +19,7 @@ Library documentation is found at <https://github.com/joshua-stone/DerPyBooru>.
 """
 
 __title__ = "DerPyBooru"
-__version__ = "0.8.0"
+__version__ = "0.9.0"
 __author__ = "Joshua Stone"
 __license__ = "Simplified BSD Licence"
 __copyright__ = "Copyright (c) 2014-2018, Joshua Stone, Nullforce"

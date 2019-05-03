@@ -163,7 +163,7 @@ class Search(object):
     return self.__class__(**params)
 
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0", current_version=__version__,
+  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
     details="This query parameter doesn't seem to be supported anymore. Use my:faves or !my:faves in the query.")
   def faves(self, option):
     """
@@ -174,7 +174,7 @@ class Search(object):
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0", current_version=__version__,
+  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
     details="This query parameter doesn't seem to be supported anymore. Use my:upvotes or !my:upvotes in the query.")
   def upvotes(self, option):
     """
@@ -185,7 +185,7 @@ class Search(object):
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0", current_version=__version__,
+  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
     details="This query parameter doesn't seem to be supported anymore. Use my:uploads or !my:uploads in the query.")
   def uploads(self, option):
     """
@@ -196,7 +196,7 @@ class Search(object):
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0", current_version=__version__,
+  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
     details="This query parameter doesn't seem to be supported anymore. Use my:watched or !my:watched in the query.")
   def watched(self, option):
     """
