@@ -1,12 +1,19 @@
-# DerPyBooru
+# DerPyBooru-Nullforce
 
 Python bindings for Derpibooru's API
 
 License: **Simplified BSD License**
 
-Version: **0.9.2**
+|||
+----------------|------
+Version         | [![Version](https://img.shields.io/pypi/v/derpybooru-nullforce.svg)](https://pypi.org/project/DerPyBooru-Nullforce/)
+Python Versions | [![](https://img.shields.io/pypi/pyversions/derpybooru-nullforce.svg)](https://pypi.org/project/DerPyBooru-Nullforce/)
+Downloads       | [![Downloads](https://pepy.tech/badge/derpybooru-nullforce)](https://pepy.tech/project/derpybooru-nullforce)
 
-[![Downloads](https://pepy.tech/badge/derpybooru-nullforce)](https://pepy.tech/project/derpybooru-nullforce)
+## About this Fork
+
+This is a fork of the [joshua-stone/DerPyBooru](https://github.com/joshua-stone/DerPyBooru)
+repository; it is meant to be a drop in replacement for the modules in that package.
 
 ## Features
 
@@ -19,11 +26,6 @@ Version: **0.9.2**
 
 - python3.0 or newer
 - requests
-
-## About this Fork
-
-This is a fork of the DerPyBooru package; it is meant to be a drop in replacement
-for the modules in that package.
 
 ## How to install
 
