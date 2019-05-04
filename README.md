@@ -24,20 +24,19 @@ repository; it is meant to be a drop in replacement for the modules in that pack
 
 ## Dependencies
 
-- python3.0 or newer
+- python 2.7, 3.0 or newer
 - requests
 
 ## How to install
 
-### Python 3.x
-
-    $ pip3 install derpybooru-nullforce
-
+```shell
+  pip install derpybooru-nullforce
+```
 ## Checking documentation
 
-### Python 3.x
-
-    $ pydoc3 derpibooru
+```shell
+  pydoc derpibooru
+```
 
 ## Typical usage
 
