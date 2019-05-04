@@ -4,8 +4,8 @@ Before starting, read: [Packaging Python Projects](https://packaging.python.org/
 
 ## Steps for Packaging
 
-### Prepare the code:
-- Run the tests
+### Prepare the code
+- Run the tests with `pytest`
 - On a branch:
   - Verify the CHANGELOG notes are correct
   - Update the version in:
@@ -14,20 +14,18 @@ Before starting, read: [Packaging Python Projects](https://packaging.python.org/
   - If this is a major, minor, or patch release:
     - `git tag <major>.<minor>.<patch>`
 
-### Create a preliminary package:
-- Clean up the `dist/` folder
-- Create Source distribution: `python setup.py sdist`
-- Create Universal wheel: `python setup.py bdist_wheel --universal`
-
-### Test the package installation:
-- Use a [temporary virtual environment](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html)
-- `mktmpenv`
-- `pip install dist/<package>`
-- Run the tests
+### Test the package installation
+- Run `tox` or `tox -e py37`
+- Did it pass?
 
 ### Merge changes into master
 - Merge the branch back to `master` and push changes and tags
 - Update the release notes for the tag in github
+
+### Create a release package
+- Clean up the `dist/` folder
+- Create Source distribution: `python setup.py sdist`
+- Create Universal wheel: `python setup.py bdist_wheel --universal`
 
 ### Upload the package to PyPI
 If you're manually uploading to PyPI do this; otherwise, let the CI/CD pipeline
