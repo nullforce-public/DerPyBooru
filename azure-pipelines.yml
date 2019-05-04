@@ -7,6 +7,8 @@
 trigger:
 - master
 
+name: $(MyPackageVersion)_$(Date:yyyyMMdd)$(Rev:.r)
+
 jobs:
 - job: 'buildAndTest'
   displayName: 'Build and Test'
@@ -68,6 +70,11 @@ jobs:
       python setup.py sdist
       python setup.py bdist_wheel --universal
     displayName: 'Create package'
+
+  - bash: |
+      export PACKAGE_VERSION=$(cat derpibooru/VERSION)
+      echo "##vso[task.setvariable variable=MyPackageVersion]$PACKAGE_VERSION"
+    displayName: 'Set build number'
 
   - task: PublishPipelineArtifact@0
     inputs:
