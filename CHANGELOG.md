@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Other
 - Added badges to README and other document changes
+- Adopt tox for package install testing
 
 ## [0.9.2]
 ### Fixed
