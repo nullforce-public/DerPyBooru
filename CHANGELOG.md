@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.2]
+### Fixed
+- Use shared VERSION file.
+
+
 ## [0.9.1]
 ### Fixed
 - Add missing dependency on `deprecation` package.
@@ -34,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 See [joshua-stone/DerPyBooru](https://github.com/joshua-stone/DerPyBooru).
 
 
-[Unreleased]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.1...HEAD
+[Unreleased]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.2...HEAD
+[0.9.2]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.1...0.9.2
 [0.9.1]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.0...0.9.1
 [0.9.0]: https://github.com/nullforce-public/DerPyBooru/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/nullforce-public/DerPyBooru/compare/0.7.3...0.8.0

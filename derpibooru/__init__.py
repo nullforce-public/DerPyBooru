@@ -20,7 +20,7 @@ Library documentation is found at <https://github.com/joshua-stone/DerPyBooru>.
 from os import path
 
 # Get the version from the VERSION file
-with open(path.join(here, 'VERSION')) as version_file:
+with open(path.join(path.abspath(path.dirname(__file__)), 'VERSION')) as version_file:
   version = version_file.read().strip()
 
 __title__ = "DerPyBooru"
