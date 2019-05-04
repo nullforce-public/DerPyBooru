@@ -129,3 +129,11 @@ for post in Search().key(key).watched(user.ONLY):
 ## Changelog
 
 See [CHANGELOG](CHANGELOG.md)
+
+## [0.9.3]
+### Fixed
+- Encoding error in setup.py when running Python 2.7
+
+### Other
+- Added badges to README and other document changes
+- Adopt tox for package install testing
