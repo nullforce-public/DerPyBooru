@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
   long_description = f.read()
 
 # Get the version from the VERSION file
-with open(path.join(here, 'VERSION')) as version_file:
+with open(path.join(here, 'derpibooru', 'VERSION')) as version_file:
   version = version_file.read().strip()
 
 setup(
