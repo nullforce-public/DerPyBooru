@@ -4,7 +4,7 @@ Python bindings for Derpibooru's API
 
 License: **Simplified BSD License**
 
-Version: **0.9.1**
+Version: **0.9.2**
 
 [![Downloads](https://pepy.tech/badge/derpybooru-nullforce)](https://pepy.tech/project/derpybooru-nullforce)
 
