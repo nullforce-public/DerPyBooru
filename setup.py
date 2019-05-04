@@ -10,15 +10,19 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
   long_description = f.read()
 
+# Get the version from the VERSION file
+with open(path.join(here, 'VERSION')) as version_file:
+  version = version_file.read().strip()
+
 setup(
   name = "DerPyBooru_Nullforce",
   # Versions should comply with PEP 440:
   # https://www.python.org/dev/peps/pep-0440/
-  version = "0.9.1",
+  version = version,
   description = "Python bindings for Derpibooru's API",
   long_description = long_description,
   long_description_content_type = "text/markdown",
-  url = "https://github.com/nullforce-forks/NF-DerPyBooru",
+  url = "https://github.com/nullforce-public/DerPyBooru",
   author = "Nullforce",
   author_email = "glenngit@nullforce.com",
   license = "Simplified BSD License",
@@ -29,7 +33,7 @@ setup(
   #download_url = "https://github.com/joshua-stone/DerPyBooru/tarball/0.7.2",
   # For a list of valid classifiers, see https://pypi.org/classifiers/
   classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "License :: OSI Approved :: BSD License",
