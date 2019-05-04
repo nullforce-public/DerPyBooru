@@ -7,11 +7,11 @@ from setuptools import find_packages
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), 'r') as f:
   long_description = f.read()
 
 # Get the version from the VERSION file
-with open(path.join(here, 'derpibooru', 'VERSION')) as version_file:
+with open(path.join(here, 'derpibooru', 'VERSION'), 'r') as version_file:
   version = version_file.read().strip()
 
 setup(
