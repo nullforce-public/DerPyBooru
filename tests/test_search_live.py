@@ -27,7 +27,7 @@ def test_ascending():
     # by comparing the ID of the next image 
     if image is not images[-1]:
       next_image = images[images.index(image) + 1]
-      assert image.id_number < next_image.id_number
+      assert image.id < next_image.id
 
 def test_descending():
   """
@@ -43,5 +43,4 @@ def test_descending():
   # by comparing the ID of the next image
     if image is not images[-1]:
       next_image = images[images.index(image) + 1]
-      assert image.id_number > next_image.id_number
-
+      assert image.id > next_image.id
