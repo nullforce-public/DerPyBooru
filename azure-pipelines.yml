@@ -7,7 +7,7 @@
 trigger:
 - master
 
-name: $(MyPackageVersion)_$(Date:yyyyMMdd)$(Rev:.r)
+name: _$(Date:yyyyMMdd)$(Rev:.r)
 
 jobs:
 - job: 'buildAndTest'
@@ -73,7 +73,7 @@ jobs:
 
   - bash: |
       export PACKAGE_VERSION=$(cat derpibooru/VERSION)
-      echo "##vso[task.setvariable variable=MyPackageVersion]$PACKAGE_VERSION"
+      echo "##vso[build.updatebuildnumber]$PACKAGE_VERSION.$BUILD_BUILDNUMBER"
     displayName: 'Set build number'
 
   - task: PublishPipelineArtifact@0
