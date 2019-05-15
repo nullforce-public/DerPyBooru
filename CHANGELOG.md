@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Updated `Search` methods to use `q=` params:
+  - `faves` uses `my:faves`
+  - `upvotes` uses `my:upvotes`
+  - `uploads` uses `my:uploads`
+  - `watched` uses `my:watched`
 
 
 ## [0.9.3]
@@ -32,11 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support for the `updated_at`, `first_seen_at`, and `tag_count` sort options.
 
 ### Deprecated
-- Mark `Search()` methods that appear to be no longer supported as deprecated:
-  - faves
-  - uploads
-  - upvotes
-  - watched
+- Mark `Search` methods that appear to be no longer supported as deprecated:
+  - `faves`
+  - `uploads`
+  - `upvotes`
+  - `watched`
 
 
 ## [0.8.0]

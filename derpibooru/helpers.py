@@ -67,12 +67,11 @@ def format_params(params):
 
   for key, value in params.items():
     if key == "key":
+      # Handle API Key
       if value:
         p["key"] = value
-    elif key in ("faves", "upvotes", "uploads", "watched"):
-      if value and params["key"]:
-        p[key] = value
     elif key == "q":
+      # If no value is given, make the query for all
       p["q"] = ",".join(value) if value else "*"
     else:
       p[key] = value

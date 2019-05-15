@@ -25,7 +25,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from sys import version_info
-import deprecation
 
 from .request import get_images, url
 from .image import Image
@@ -162,48 +161,39 @@ class Search(object):
 
     return self.__class__(**params)
 
-
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
-    details="This query parameter doesn't seem to be supported anymore. Use my:faves or !my:faves in the query.")
   def faves(self, option):
     """
     Set whether to filter by a user's faves list. Options available are
     user.ONLY, user.NOT, and None; default is None.
     """
-    params = join_params(self.parameters, {"faves": option})
+    params = join_params(self.parameters, {"q": "my:faves" if option == user.ONLY else "!my:faves"})
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
-    details="This query parameter doesn't seem to be supported anymore. Use my:upvotes or !my:upvotes in the query.")
   def upvotes(self, option):
     """
     Set whether to filter by a user's upvoted list. Options available are
     user.ONLY, user.NOT, and None; default is None.
     """
-    params = join_params(self.parameters, {"upvotes": option})
+    params = join_params(self.parameters, {"q": "my:upvotes" if option == user.ONLY else "!my:upvotes"})
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
-    details="This query parameter doesn't seem to be supported anymore. Use my:uploads or !my:uploads in the query.")
   def uploads(self, option):
     """
     Set whether to filter by a user's uploads list. Options available are
     user.ONLY, user.NOT, and None; default is None.
     """
-    params = join_params(self.parameters, {"uploads": option})
+    params = join_params(self.parameters, {"q": "my:uploads" if option == user.ONLY else "!my:uploads"})
 
     return self.__class__(**params)
 
-  @deprecation.deprecated(deprecated_in="0.9.0", removed_in="1.0.0",
-    details="This query parameter doesn't seem to be supported anymore. Use my:watched or !my:watched in the query.")
   def watched(self, option):
     """
     Set whether to filter by a user's watchlist. Options available are
     user.ONLY, user.NOT, and None; default is None.
     """
-    params = join_params(self.parameters, {"watched": option})
+    params = join_params(self.parameters, {"q": "my:watched" if option == user.ONLY else "!my:watched"})
 
     return self.__class__(**params)
 
