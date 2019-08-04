@@ -98,6 +98,10 @@ class Image(object):
     return self.representations["full"]
 
   @property
+  def image_json(self):
+    return self.data["image"]
+
+  @property
   def faved_by(self):
     faved_by = "favourited_by_users"
 
@@ -132,4 +136,3 @@ class Image(object):
 
     if data:
       self._data = data
-

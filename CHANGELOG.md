@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+<!-- [0.10.0] -->
+### Added
+- Image class now has an `image_json` property to get to the underlying JSON
+  field (`image` still returns `representations["full"]` but will change to
+  the JSON value in a future version).
+
 ### Fixed
 - Updated `Search` methods to use `q=` params:
   - `faves` uses `my:faves`
@@ -56,6 +62,9 @@ See [joshua-stone/DerPyBooru](https://github.com/joshua-stone/DerPyBooru).
 
 
 [Unreleased]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.3...HEAD
+<!--
+[0.10.0]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.3...0.10.0
+-->
 [0.9.3]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.2...0.9.3
 [0.9.2]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.1...0.9.2
 [0.9.1]: https://github.com/nullforce-public/DerPyBooru/compare/0.9.0...0.9.1
