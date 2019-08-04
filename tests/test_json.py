@@ -1,7 +1,7 @@
-"""Test Image class json parsing"""
 import json
 import pytest
 from derpibooru.image_old import ImageOld
+from derpibooru.image import Image
 
 @pytest.fixture
 def json_loader():
@@ -13,27 +13,31 @@ def json_loader():
         return data
     return _loader
 
-def test_json_loading(json_loader):
+def test_image_is_backwards_compatible(json_loader):
     """
     Tests whether the results in a query contain the tag that was being searched
     for
     """
     # Arrange
-    json_str = json_loader("tests/2108665.json")
+    json = json_loader("tests/1.json")
 
     # Act
-    image = ImageOld(json_str)
+    image = Image.from_dict(json)
 
     # Assert
-    assert image.data
+    assert image.id == 1
 
-def test_image_json_is_not_image(json_loader):
-    """Test that image_json is not image"""
+def test_image_compat(json_loader):
+    """
+    Tests whether the results in a query contain the tag that was being searched
+    for
+    """
     # Arrange
-    json_str = json_loader("tests/2108665.json")
+    json = json_loader("tests/1.json")
 
     # Act
-    image = ImageOld(json_str)
+    image = ImageOld(json)
 
     # Assert
-    assert image.image != image.image_json
+    assert image.id == 1
+    assert image.thumb

@@ -202,7 +202,7 @@ if version_info < (3, 0):
         """
         Returns a result wrapped in a new instance of Image().
         """
-        return Image(self._search.next())
+        return Image.from_dict(self._search.next())
 
     Search.next = next
 
@@ -211,6 +211,6 @@ else:
         """
         Returns a result wrapped in a new instance of Image().
         """
-        return Image(next(self._search))
+        return Image.from_dict(next(self._search))
 
     Search.__next__ = __next__

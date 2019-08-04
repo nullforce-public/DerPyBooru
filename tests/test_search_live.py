@@ -44,3 +44,16 @@ def test_descending():
         if image is not images[-1]:
             next_image = images[images.index(image) + 1]
             assert image.id > next_image.id
+
+def test_image():
+    """
+    Tests that image from json is valid (and more than just the id + extension)
+    """
+    print("test_image")
+    limit = 10
+    images = [image for image in Search().descending().limit(limit)]
+
+    assert len(images) == limit
+
+    for image in images:
+        assert len(image.image) > 20

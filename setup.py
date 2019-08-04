@@ -28,7 +28,7 @@ setup(
     license="Simplified BSD License",
     platforms=["any"],
     packages=find_packages(exclude=["tests"]),
-    install_requires=["requests"],
+    install_requires=["python-dateutil", "requests"],
     include_package_data=True,
     #download_url = "https://github.com/joshua-stone/DerPyBooru/tarball/0.7.2",
     # For a list of valid classifiers, see https://pypi.org/classifiers/
