@@ -25,70 +25,69 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 __all__ = [
-  "tags",
-  "api_key",
-  "sort_format",
-  "format_params",
-  "join_params"
+    "tags",
+    "api_key",
+    "sort_format",
+    "format_params",
+    "join_params"
 ]
 
 from .sort import sort
 from .user import user
 
 def tags(q):
-  tags = {str(tag).strip() for tag in q if tag}
+    tags = {str(tag).strip() for tag in q if tag}
 
-  return tags if tags else {}
+    return tags if tags else {}
 
 def api_key(api_key):
-  return str(api_key) if api_key else ""
+    return str(api_key) if api_key else ""
 
 def validate_filter(filter_id):
-  # is it always an number?
-  return str(filter_id) if filter_id else ""
+    # is it always an number?
+    return str(filter_id) if filter_id else ""
 
 def sort_format(sf):
-  if sf not in sort.methods:
-    raise AttributeError(sf)
-  else:
-    return sf
+    if sf not in sort.methods:
+        raise AttributeError(sf)
+    else:
+        return sf
 
 def user_option(option):
-  if option: 
-    if option not in user.options:
-      raise AttributeError(option)
+    if option: 
+        if option not in user.options:
+            raise AttributeError(option)
+        else:
+            return option
     else:
-      return option
-  else:
-    return ""
+        return ""
 
 def format_params(params):
-  p = {}
+    p = {}
 
-  for key, value in params.items():
-    if key == "key":
-      # Handle API Key
-      if value:
-        p["key"] = value
-    elif key == "q":
-      # If no value is given, make the query for all
-      p["q"] = ",".join(value) if value else "*"
-    else:
-      p[key] = value
+    for key, value in params.items():
+        if key == "key":
+            # Handle API Key
+            if value:
+                p["key"] = value
+        elif key == "q":
+            # If no value is given, make the query for all
+            p["q"] = ",".join(value) if value else "*"
+        else:
+            p[key] = value
 
-  return p
+    return p
 
 def join_params(old_params, new_params):
-  new_dict = dict(list(old_params.items()) + list(new_params.items()))
+    new_dict = dict(list(old_params.items()) + list(new_params.items()))
 
-  return new_dict
+    return new_dict
 
 def set_limit(limit):
+    if limit is not None:
+        l = int(limit)
+    else:
+        l = None
 
-  if limit is not None:
-    l = int(limit)
-  else:
-    l = None
-
-  return l
+    return l
 

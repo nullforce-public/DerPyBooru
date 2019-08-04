@@ -25,31 +25,30 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 __all__ = [
-  "sort"
+    "sort"
 ]
 
 class Sort(object):
-  def __init__(self):
-    for method in self.methods:
-      setattr(self, method.upper(), method)
+    def __init__(self):
+        for method in self.methods:
+            setattr(self, method.upper(), method)
 
-  @property
-  def methods(self):
-    sorting_methods = {
-      "created_at",
-      "updated_at",
-      "first_seen_at",
-      "score",
-      "wilson",
-      "relevance",
-      "height",
-      "width",
-      "comments",
-      "tag_count",
-      "random"
-    }
+    @property
+    def methods(self):
+        sorting_methods = {
+            "created_at",
+            "updated_at",
+            "first_seen_at",
+            "score",
+            "wilson",
+            "relevance",
+            "height",
+            "width",
+            "comments",
+            "tag_count",
+            "random"
+        }
 
-    return sorting_methods
+        return sorting_methods
 
 sort = Sort()
-

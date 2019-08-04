@@ -25,21 +25,20 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 __all__ = [
-  "user"
+    "user"
 ]
 
 class User(object):
-  def __init__(self):
-    for option in self.options:
-      setattr(self, option.upper(), option)
+    def __init__(self):
+        for option in self.options:
+            setattr(self, option.upper(), option)
 
-  @property
-  def options(self):
-    available_options = {
-      "only",
-      "not"
-    }
-    return available_options
+    @property
+    def options(self):
+        available_options = {
+            "only",
+            "not"
+        }
+        return available_options
 
 user = User()
-

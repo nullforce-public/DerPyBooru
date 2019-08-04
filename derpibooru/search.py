@@ -31,187 +31,186 @@ from .image import Image
 from .helpers import tags, api_key, sort_format, join_params, user_option, set_limit, validate_filter
 
 __all__ = [
-  "Search"
+    "Search"
 ]
 
 class Search(object):
-  """
-  Search() is the primary interface for interacting with Derpibooru's REST API.
+    """
+    Search() is the primary interface for interacting with Derpibooru's REST API.
 
-  All properties are read-only, and every method returns a new instance of
-  Search() to avoid mutating state in ongoing search queries. This makes object
-  interactions predictable as well as making versioning of searches relatively
-  easy.
-  """
-  def __init__(self, key="", q={}, sf="created_at", sd="desc", limit=50,
-               faves="", upvotes="", uploads="", watched="", filter_id=""):
+    All properties are read-only, and every method returns a new instance of
+    Search() to avoid mutating state in ongoing search queries. This makes object
+    interactions predictable as well as making versioning of searches relatively
+    easy.
     """
-    By default initializes an instance of Search with the parameters to get
-    the first 50 images on Derpibooru's front page.
-    """
-    self._params = {
-      "key": api_key(key),
-      "q": tags(q),
-      "sf": sort_format(sf),
-      "sd": sd,
-      "faves": user_option(faves),
-      "upvotes": user_option(upvotes),
-      "uploads": user_option(uploads),
-      "watched": user_option(watched),
-      "filter_id": validate_filter(filter_id)
-    }
-    self._limit = set_limit(limit)
-    self._search = get_images(self._params, self._limit)
-  
-  def __iter__(self):
-    """
-    Make Search() iterable so that new search results can be lazily generated
-    for performance reasons.
-    """
-    return self
+    def __init__(self, key="", q={}, sf="created_at", sd="desc", limit=50,
+                 faves="", upvotes="", uploads="", watched="", filter_id=""):
+        """
+        By default initializes an instance of Search with the parameters to get
+        the first 50 images on Derpibooru's front page.
+        """
+        self._params = {
+            "key": api_key(key),
+            "q": tags(q),
+            "sf": sort_format(sf),
+            "sd": sd,
+            "faves": user_option(faves),
+            "upvotes": user_option(upvotes),
+            "uploads": user_option(uploads),
+            "watched": user_option(watched),
+            "filter_id": validate_filter(filter_id)
+        }
+        self._limit = set_limit(limit)
+        self._search = get_images(self._params, self._limit)
 
-  @property
-  def parameters(self):
-    """
-    Returns a list of available parameters; useful for passing state to new
-    instances of Search().
-    """
-    params = join_params(self._params, {"limit": self._limit})
-    return params
+    def __iter__(self):
+        """
+        Make Search() iterable so that new search results can be lazily generated
+        for performance reasons.
+        """
+        return self
 
-  @property
-  def url(self):
-    """
-    Returns a search URL built on set parameters. Example based on default
-    parameters:
+    @property
+    def parameters(self):
+        """
+        Returns a list of available parameters; useful for passing state to new
+        instances of Search().
+        """
+        params = join_params(self._params, {"limit": self._limit})
+        return params
 
-    https://derpibooru.org/search?sd=desc&sf=created_at&q=%2A
-    """
-    return url(self._params)
+    @property
+    def url(self):
+        """
+        Returns a search URL built on set parameters. Example based on default
+        parameters:
 
-  def key(self, key=""):
-    """
-    Takes a user's API key string which applies content settings. API keys can
-    be found at <https://derpibooru.org/users/edit>.
-    """
-    params = join_params(self.parameters, {"key": key})
+        https://derpibooru.org/search?sd=desc&sf=created_at&q=%2A
+        """
+        return url(self._params)
 
-    return self.__class__(**params)
+    def key(self, key=""):
+        """
+        Takes a user's API key string which applies content settings. API keys can
+        be found at <https://derpibooru.org/users/edit>.
+        """
+        params = join_params(self.parameters, {"key": key})
 
-  def query(self, *q):
-    """
-    Takes one or more strings for searching by tag and/or metadata.
-    """
-    params = join_params(self.parameters, {"q": q})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def query(self, *q):
+        """
+        Takes one or more strings for searching by tag and/or metadata.
+        """
+        params = join_params(self.parameters, {"q": q})
 
-  def sort_by(self, sf):
-    """
-    Determines how to sort search results. Available sorting methods are:
-      sort.CREATED_AT (default)
-      sort.UPDATED_AT
-      sort.FIRST_SEEN_AT
-      sort.SCORE
-      sort.WILSON
-      sort.RELEVANCE
-      sort.HEIGHT
-      sort.WIDTH
-      sort.COMMENTS
-      sort.TAG_COUNT
-      sort.RANDOM
-    """
-    params = join_params(self.parameters, {"sf": sf})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def sort_by(self, sf):
+        """
+        Determines how to sort search results. Available sorting methods are:
+            sort.CREATED_AT (default)
+            sort.UPDATED_AT
+            sort.FIRST_SEEN_AT
+            sort.SCORE
+            sort.WILSON
+            sort.RELEVANCE
+            sort.HEIGHT
+            sort.WIDTH
+            sort.COMMENTS
+            sort.TAG_COUNT
+            sort.RANDOM
+        """
+        params = join_params(self.parameters, {"sf": sf})
 
-  def descending(self):
-    """
-    Order results from largest to smallest; default is descending order.
-    """
-    params = join_params(self.parameters, {"sd": "desc"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def descending(self):
+        """
+        Order results from largest to smallest; default is descending order.
+        """
+        params = join_params(self.parameters, {"sd": "desc"})
 
-  def ascending(self):
-    """
-    Order results from smallest to largest; default is descending order.
-    """
-    params = join_params(self.parameters, {"sd": "asc"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def ascending(self):
+        """
+        Order results from smallest to largest; default is descending order.
+        """
+        params = join_params(self.parameters, {"sd": "asc"})
 
-  def limit(self, limit):
-    """
-    Set absolute limit on number of images to return, or set to None to return
-    as many results as needed; default 50 posts.
-    """
-    params = join_params(self.parameters, {"limit": limit})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def limit(self, limit):
+        """
+        Set absolute limit on number of images to return, or set to None to return
+        as many results as needed; default 50 posts.
+        """
+        params = join_params(self.parameters, {"limit": limit})
 
-  def filter(self, filter_id=""):
-    """
-    Takes a filter's ID to be used in the current search context. Filter IDs can
-    be found at <https://derpibooru.org/filters/> by inspecting the URL parameters.
-    
-    If no filter is provided, the user's current filter will be used.
-    """
-    params = join_params(self.parameters, {"filter_id": filter_id})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def filter(self, filter_id=""):
+        """
+        Takes a filter's ID to be used in the current search context. Filter IDs can
+        be found at <https://derpibooru.org/filters/> by inspecting the URL parameters.
+        
+        If no filter is provided, the user's current filter will be used.
+        """
+        params = join_params(self.parameters, {"filter_id": filter_id})
 
-  def faves(self, option):
-    """
-    Set whether to filter by a user's faves list. Options available are
-    user.ONLY, user.NOT, and None; default is None.
-    """
-    params = join_params(self.parameters, {"q": "my:faves" if option == user.ONLY else "!my:faves"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def faves(self, option):
+        """
+        Set whether to filter by a user's faves list. Options available are
+        user.ONLY, user.NOT, and None; default is None.
+        """
+        params = join_params(self.parameters, {"q": "my:faves" if option == user.ONLY else "!my:faves"})
 
-  def upvotes(self, option):
-    """
-    Set whether to filter by a user's upvoted list. Options available are
-    user.ONLY, user.NOT, and None; default is None.
-    """
-    params = join_params(self.parameters, {"q": "my:upvotes" if option == user.ONLY else "!my:upvotes"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def upvotes(self, option):
+        """
+        Set whether to filter by a user's upvoted list. Options available are
+        user.ONLY, user.NOT, and None; default is None.
+        """
+        params = join_params(self.parameters, {"q": "my:upvotes" if option == user.ONLY else "!my:upvotes"})
 
-  def uploads(self, option):
-    """
-    Set whether to filter by a user's uploads list. Options available are
-    user.ONLY, user.NOT, and None; default is None.
-    """
-    params = join_params(self.parameters, {"q": "my:uploads" if option == user.ONLY else "!my:uploads"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def uploads(self, option):
+        """
+        Set whether to filter by a user's uploads list. Options available are
+        user.ONLY, user.NOT, and None; default is None.
+        """
+        params = join_params(self.parameters, {"q": "my:uploads" if option == user.ONLY else "!my:uploads"})
 
-  def watched(self, option):
-    """
-    Set whether to filter by a user's watchlist. Options available are
-    user.ONLY, user.NOT, and None; default is None.
-    """
-    params = join_params(self.parameters, {"q": "my:watched" if option == user.ONLY else "!my:watched"})
+        return self.__class__(**params)
 
-    return self.__class__(**params)
+    def watched(self, option):
+        """
+        Set whether to filter by a user's watchlist. Options available are
+        user.ONLY, user.NOT, and None; default is None.
+        """
+        params = join_params(self.parameters, {"q": "my:watched" if option == user.ONLY else "!my:watched"})
+
+        return self.__class__(**params)
 
 if version_info < (3, 0):
-  def next(self):
-    """
-    Returns a result wrapped in a new instance of Image().
-    """
-    return Image(self._search.next())
+    def next(self):
+        """
+        Returns a result wrapped in a new instance of Image().
+        """
+        return Image(self._search.next())
 
-  Search.next = next
+    Search.next = next
 
 else:
-  def __next__(self):
-    """
-    Returns a result wrapped in a new instance of Image().
-    """
-    return Image(next(self._search))
+    def __next__(self):
+        """
+        Returns a result wrapped in a new instance of Image().
+        """
+        return Image(next(self._search))
 
-  Search.__next__ = __next__
-
+    Search.__next__ = __next__

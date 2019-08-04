@@ -29,110 +29,110 @@ from .request import get_image_data
 from .comment import Comment
 
 __all__ = [
-  "Image"
+    "Image"
 ]
 
 class Image(object):
-  """
-  This class provides a thin wrapper around JSON data, mapping each value to
-  its own property. Once instantiated the data is immutable so as to reflect
-  the stateless nature of a REST API
-  """
-  def __init__(self, data):
-    self._data = data
+    """
+    This class provides a thin wrapper around JSON data, mapping each value to
+    its own property. Once instantiated the data is immutable so as to reflect
+    the stateless nature of a REST API
+    """
+    def __init__(self, data):
+        self._data = data
 
-    for field, body in data.items():
-      if not hasattr(self, field):
-        setattr(self, field, body) 
+        for field, body in data.items():
+            if not hasattr(self, field):
+                setattr(self, field, body) 
 
-  def __str__(self):
-    return "Image({0})".format(self.id)
+    def __str__(self):
+        return "Image({0})".format(self.id)
 
-  @property
-  def tags(self):
-    return self.data["tags"].split(", ")
+    @property
+    def tags(self):
+        return self.data["tags"].split(", ")
 
-  @property
-  def representations(self):
-    sizes = self.data["representations"].items()
-    images = { image: "https:{}".format(url) for image, url in sizes }
+    @property
+    def representations(self):
+        sizes = self.data["representations"].items()
+        images = { image: "https:{}".format(url) for image, url in sizes }
 
-    return images
+        return images
 
-  @property
-  def thumb(self):
-    return self.representations["thumb"]
+    @property
+    def thumb(self):
+        return self.representations["thumb"]
 
-  @property
-  def thumb_tiny(self):
-    return self.representations["thumb_tiny"]
+    @property
+    def thumb_tiny(self):
+        return self.representations["thumb_tiny"]
 
-  @property
-  def small(self):
-    return self.representations["small"]
+    @property
+    def small(self):
+        return self.representations["small"]
 
-  @property
-  def full(self):
-    url = sub("_.*\.", ".", self.image)
+    @property
+    def full(self):
+        url = sub("_.*\.", ".", self.image)
 
-    return url
+        return url
 
-  @property
-  def tall(self):
-    return self.representations["tall"]
+    @property
+    def tall(self):
+        return self.representations["tall"]
 
-  @property
-  def large(self):
-    return self.representations["large"]
+    @property
+    def large(self):
+        return self.representations["large"]
 
-  @property
-  def medium(self):
-    return self.representations["medium"]
+    @property
+    def medium(self):
+        return self.representations["medium"]
 
-  @property
-  def thumb_small(self):
-    return self.representations["thumb_small"]
+    @property
+    def thumb_small(self):
+        return self.representations["thumb_small"]
 
-  @property
-  def image(self):
-    return self.representations["full"]
+    @property
+    def image(self):
+        return self.representations["full"]
 
-  @property
-  def image_json(self):
-    return self.data["image"]
+    @property
+    def image_json(self):
+        return self.data["image"]
 
-  @property
-  def faved_by(self):
-    faved_by = "favourited_by_users"
+    @property
+    def faved_by(self):
+        faved_by = "favourited_by_users"
 
-    if not faved_by in self.data:
-      if self.faves > 0:
-        self.update()
-      else:
-        self._data[faved_by] = []
+        if not faved_by in self.data:
+            if self.faves > 0:
+                self.update()
+            else:
+                self._data[faved_by] = []
 
-    return self._data[faved_by]
+        return self._data[faved_by]
 
-  @property
-  def comments(self):
-    if not "comments" in self.data:
-      if self.comment_count > 0:
-        self.update()
-      else:
-        self._data["comments"] = []
+    @property
+    def comments(self):
+        if not "comments" in self.data:
+            if self.comment_count > 0:
+                self.update()
+            else:
+                self._data["comments"] = []
 
-    return [Comment(c) for c in self.data["comments"]]
-       
-  @property
-  def url(self):
-    return "https://derpibooru.org/{}".format(self.id)
+        return [Comment(c) for c in self.data["comments"]]
 
-  @property
-  def data(self):
-    return self._data
+    @property
+    def url(self):
+        return "https://derpibooru.org/{}".format(self.id)
 
-  def update(self):
-    data = get_image_data(self.id)
+    @property
+    def data(self):
+        return self._data
 
-    if data:
-      self._data = data
+    def update(self):
+        data = get_image_data(self.id)
+
+        if data:
+            self._data = data

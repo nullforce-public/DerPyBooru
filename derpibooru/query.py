@@ -25,81 +25,81 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 __all__ = [
-  "query"
+    "query"
 ]
 
 class Query_Field(object):
-  def __init__(self, name, is_neg=False):
-    self.name = name
-    self.is_neg = is_neg
+    def __init__(self, name, is_neg=False):
+        self.name = name
+        self.is_neg = is_neg
 
-  def __neg__(self):
-    return self.__class__(self.name, is_neg=True)
+    def __neg__(self):
+        return self.__class__(self.name, is_neg=True)
 
 class Equal(Query_Field):
-  def __eq__(self, value):
-    if value:
-      return "{}{}:{}".format(
-        "-" if self.is_neg else "",
-        self.name,
-        value
-      )
-    else:
-      raise ValueError(value)
+    def __eq__(self, value):
+        if value:
+            return "{}{}:{}".format(
+                "-" if self.is_neg else "",
+                self.name,
+                value
+            )
+        else:
+            raise ValueError(value)
 
-  def __gt__(self, value):
-    raise AttributeError("gt")
+    def __gt__(self, value):
+        raise AttributeError("gt")
 
-  def __lt__(self, value):
-    raise AttributeError("lt")
+    def __lt__(self, value):
+        raise AttributeError("lt")
 
-  def __ge__(self, value):
-    raise AttributeError("ge")
+    def __ge__(self, value):
+        raise AttributeError("ge")
 
-  def __le__(self, value):
-    raise AttributeError("le")
+    def __le__(self, value):
+        raise AttributeError("le")
 
- 
+
 class Comparable(Query_Field):
-  def op(self, op, value):
-    try:
-      float(value)
-      return "{}{}.{}:{}".format(
-        "-" if self.is_neg else "",
-        self.name,
-        op,
-        value
-      )
-    except:
-      raise ValueError(value)
- 
-  def __eq__(self, value):
-    return self.op("eq", value)
- 
-  def __gt__(self, value):
-    return self.op("gt", value)
- 
-  def __lt__(self, value):
-    return self.op("lt", value)
- 
-  def __ge__(self, value):
-    return self.op("gte", value)
- 
-  def __le__(self, value):
-    return self.op("lte", value) 
+    def op(self, op, value):
+        try:
+            float(value)
+            return "{}{}.{}:{}".format(
+                "-" if self.is_neg else "",
+                self.name,
+                op,
+                value
+            )
+        except:
+            raise ValueError(value)
+
+    def __eq__(self, value):
+        return self.op("eq", value)
+
+    def __gt__(self, value):
+        return self.op("gt", value)
+
+    def __lt__(self, value):
+        return self.op("lt", value)
+
+    def __ge__(self, value):
+        return self.op("gte", value)
+
+    def __le__(self, value):
+        return self.op("lte", value) 
 
 
 class Query(object):
-  def __init__(self):
-    for field in ["description", "faved_by", "source_url", "orig_sha512_hash",
-                  "sha512_hash", "uploader"]:
-      setattr(self, field, Equal(field))
+    def __init__(self):
+        for field in ["description", "faved_by", "source_url", "orig_sha512_hash",
+                      "sha512_hash", "uploader"]:
+            setattr(self, field, Equal(field))
 
-    for field in ["aspect_ratio", "downvotes", "faves", "height", "score",
-                  "upvotes", "width"]:
-      setattr(self, field, Comparable(field))
+        for field in ["aspect_ratio", "downvotes", "faves", "height", "score",
+                      "upvotes", "width"]:
+            setattr(self, field, Comparable(field))
 
-  def __neg__(self):
-    return self.__class__()
+    def __neg__(self):
+        return self.__class__()
 
 query = Query()
