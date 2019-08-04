@@ -130,10 +130,15 @@ for post in Search().key(key).watched(user.ONLY):
 
 See [CHANGELOG](CHANGELOG.md)
 
-## [0.9.3]
-### Fixed
-- Encoding error in setup.py when running Python 2.7
+## [0.10.0]
+### Added
+- Image class now has an `image_json` property to get to the underlying JSON
+  field (`image` still returns `representations["full"]` but will change to
+  the JSON value in a future version).
 
-### Other
-- Added badges to README and other document changes
-- Adopt tox for package install testing
+### Fixed
+- Updated `Search` methods to use `q=` params:
+  - `faves` uses `my:faves`
+  - `upvotes` uses `my:upvotes`
+  - `uploads` uses `my:uploads`
+  - `watched` uses `my:watched`
