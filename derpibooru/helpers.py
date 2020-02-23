@@ -66,7 +66,7 @@ def format_params(params):
     p = {}
 
     for key, value in params.items():
-        if key == "key":
+        if key == "key" or key == "filter_id":
             # Handle API Key
             if value:
                 p["key"] = value
