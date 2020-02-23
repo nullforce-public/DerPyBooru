@@ -81,14 +81,17 @@ def get_images(parameters, limit=50):
             yield image
 
 def get_image_data(id_number):
-    url = "https://derpibooru.org/{}.json?fav=&comments=".format(id_number)
+    """
+    Get a single image
+    """
+    url = "https://derpibooru.org/api/v1/json/images/{}".format(id_number)
 
     request = get(url)
 
     if request.status_code == codes.ok:
-        data = request.json()
+        data = request.json()["image"]
 
-        if "duplicate_of" in data:
+        if "duplicate_of" in data and data["duplicate_of"] != None:
             return get_image_data(data["duplicate_of"])
         else:
             return data

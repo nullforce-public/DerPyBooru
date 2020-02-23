@@ -49,15 +49,8 @@ class Image(object):
         return "Image({0})".format(self.id)
 
     @property
-    def tags(self):
-        return self.data["tags"].split(", ")
-
-    @property
     def representations(self):
-        sizes = self.data["representations"].items()
-        images = { image: "https:{}".format(url) for image, url in sizes }
-
-        return images
+        return self.data["representations"]
 
     @property
     def thumb(self):
@@ -73,9 +66,7 @@ class Image(object):
 
     @property
     def full(self):
-        url = sub("_.*\.", ".", self.image)
-
-        return url
+        return self.representations["full"]
 
     @property
     def tall(self):
