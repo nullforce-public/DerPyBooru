@@ -69,7 +69,7 @@ def format_params(params):
         if key == "key" or key == "filter_id":
             # Handle API Key
             if value:
-                p["key"] = value
+                p[key] = value
         elif key == "q":
             # If no value is given, make the query for all
             p["q"] = ",".join(value) if value else "*"

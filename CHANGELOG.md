@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [1.0.0]
+### Added
+- Now uses the API introduced with Philomena
+
+### Removed
+- Older derpibooru API calls
+
 ## [0.10.0]
 ### Added
 - Image class now has an `image_json` property to get to the underlying JSON
